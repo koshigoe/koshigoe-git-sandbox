@@ -29,19 +29,10 @@ info "Create WIP commit"
 git commit --allow-empty -m "wip"
 git push
 
-info "Open compare page in browser"
-hub compare
-cat <<\EOF
-1. Click button "Create pull reqeust"
-2. Change title from "wip" to "{date formatted YYYY.mm.dd} {short description}"
-3. Write comment as follows:
+info "Create pull request"
+open $(hub pull-request -m"[WIP] $branch_name
 
 ## TODO
-- [ ] todo 1
-- [ ] ...
+- [ ] todo1
 - [ ] #issue
-
-4. Click button "Create pull reqeust"
-EOF
-
-# TODO: hub pull-request -f -m "[WIP] $branch_name" -b $branch_name -h master
+" | tail -n1)
