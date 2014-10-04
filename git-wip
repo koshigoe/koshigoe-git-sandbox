@@ -1,0 +1,47 @@
+#!/bin/sh
+
+set -e
+
+usage() {
+  echo "Usage: git wip <branch-name>"
+  exit 1
+}
+
+info() {
+  message=$1
+  echo "\033[1;34m==>\033[0;39m \033[1m${message}\033[0;39m"
+}
+
+branch_name=$1
+[ -z "$branch_name" ] && usage
+
+info "Update master branch"
+git checkout master
+git pull --rebase --prune origin master
+
+info "Create topic branch"
+git checkout -b $branch_name
+
+info "Push topic branch"
+git push -u origin $branch_name
+
+info "Create WIP commit"
+git commit --allow-empty -m "wip"
+git push
+
+info "Open compare page in browser"
+hub compare
+cat <<\EOF
+1. Click button "Create pull reqeust"
+2. Change title from "wip" to "{date formatted YYYY.mm.dd} {short description}"
+3. Write comment as follows:
+
+## TODO
+- [ ] todo 1
+- [ ] ...
+- [ ] #issue
+
+4. Click button "Create pull reqeust"
+EOF
+
+# TODO: hub pull-request -f -m "[WIP] $branch_name" -b $branch_name -h master
