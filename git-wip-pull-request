@@ -26,7 +26,14 @@ info "Push topic branch"
 git push -u origin $branch_name
 
 info "Create WIP commit"
-git commit --allow-empty -m "wip"
+git commit --allow-empty -m "[WIP] $branch_name
+
+TODO
+----
+- [ ] todo 1
+- [ ] todo 2
+- [ ] #issue
+"
 git push
 
 info "Create pull request"
