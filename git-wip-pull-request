@@ -1,15 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 usage() {
-  echo "Usage: git wip <branch-name>"
+  echo "Usage: git wip-pull-request <branch-name>"
   exit 1
 }
 
 info() {
   message=$1
-  echo "\033[1;34m==>\033[0;39m \033[1m${message}\033[0;39m"
+  echo -e "\033[1;34m==>\033[0;39m \033[1m${message}\033[0;39m"
 }
 
 branch_name=$1
