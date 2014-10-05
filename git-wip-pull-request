@@ -30,9 +30,4 @@ git commit --allow-empty -m "wip"
 git push
 
 info "Create pull request"
-open $(hub pull-request -m"[WIP] $branch_name
-
-## TODO
-- [ ] todo1
-- [ ] #issue
-" | tail -n1)
+hub pull-request -o
