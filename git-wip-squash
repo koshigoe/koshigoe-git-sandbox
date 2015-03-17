@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+git rebase -i --keep-empty --autosquash $(git show-branch --merge-base master HEAD)
