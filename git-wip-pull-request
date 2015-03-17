@@ -15,6 +15,18 @@ info() {
 branch_name=$1
 [ -z "$branch_name" ] && usage
 
+if ! (which hub > /dev/null 2>&1)
+then
+    echo "command not found: hub"
+    exit 1
+fi
+
+if [ -z "$GIT_EDITOR" ]
+then
+    echo 'env `GIT_EDITOR` required.'
+    exit 1
+fi
+
 info "Update master branch"
 git checkout master
 git pull --rebase --prune origin master
@@ -22,11 +34,8 @@ git pull --rebase --prune origin master
 info "Create topic branch"
 git checkout -b $branch_name
 
-info "Push topic branch"
-git push -u origin $branch_name
-
 info "Create WIP commit"
-git commit --allow-empty -m "[WIP] $branch_name
+git commit --allow-empty -m "[WIP][ci skip] $branch_name
 
 TODO
 ----
@@ -34,7 +43,9 @@ TODO
 - [ ] todo 2
 - [ ] #issue
 "
-git push
+
+info "Push topic branch"
+git push -u origin $branch_name
 
 info "Create pull request"
 hub pull-request -o
