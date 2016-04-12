@@ -27,9 +27,8 @@ then
     exit 1
 fi
 
-info "Update master branch"
-git checkout master
-git pull --rebase --prune origin master
+info "Fetch origin"
+git fetch --prune origin
 
 info "Create topic branch"
 git checkout -b $branch_name
