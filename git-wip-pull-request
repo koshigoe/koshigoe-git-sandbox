@@ -30,8 +30,8 @@ fi
 info "Fetch origin"
 git fetch --prune origin
 
-info "Create topic branch"
-git checkout -b $branch_name
+info "Create topic branch and checkout"
+git checkout -b $branch_name origin/$(git rev-parse --abbrev-ref HEAD)
 
 info "Create WIP commit"
 git commit --allow-empty -m "[WIP][ci skip] $branch_name
