@@ -27,11 +27,13 @@ then
     exit 1
 fi
 
+parent_branch=$(git rev-parse --abbrev-ref HEAD)
+
 info "Fetch origin"
 git fetch --prune origin
 
 info "Create topic branch and checkout"
-git checkout -b $branch_name origin/$(git rev-parse --abbrev-ref HEAD)
+git checkout -b $branch_name origin/$parent_branch
 
 info "Create WIP commit"
 git commit --allow-empty -m "[WIP][ci skip] $branch_name
@@ -47,4 +49,4 @@ info "Push topic branch"
 git push -u origin $branch_name
 
 info "Create pull request"
-hub pull-request -o
+hub pull-request -o -b origin/$parent_branch
