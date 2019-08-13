@@ -1,0 +1,11 @@
+on: release
+name: Release
+jobs:
+  release:
+    name: Release
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: DEBUG
+      run: "cat $GITHUB_EVENT_PATH"
