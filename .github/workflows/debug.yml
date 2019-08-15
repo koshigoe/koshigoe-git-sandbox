@@ -1,0 +1,9 @@
+name: DEBUG
+on: push
+jobs:
+  debug:
+    name: DEBUG
+    runs-on: ubuntu-latest
+    steps:
+    - name: DEBUG
+      run: cat $GITHUB_EVENT_PATH
