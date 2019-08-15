@@ -1,5 +1,5 @@
 workflow "Debug" {
-  on = "release"
+  on = "push"
   resolves = ["Output event payload"]
 }
 
