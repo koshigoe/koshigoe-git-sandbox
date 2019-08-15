@@ -1,5 +1,5 @@
 name: DEBUG
-on: push
+on: release
 jobs:
   debug:
     name: DEBUG
