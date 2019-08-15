@@ -1,10 +1,9 @@
-name: Release
-on: release
+name: DEBUG
+on: push
 jobs:
-  build:
-    name: Release
+  debug:
+    name: DEBUG
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
     - name: DEBUG
-      run: "cat $GITHUB_EVENT_PATH"
+      run: cat $GITHUB_EVENT_PATH
