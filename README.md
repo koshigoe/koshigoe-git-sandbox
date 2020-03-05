@@ -1,4 +1,5 @@
-## Setup git-wip-pull-request
+Setup git-wip-pull-request
+----
 
 ### A ###
 
